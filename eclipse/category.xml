@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="br.lupa.javva.feature" version="0.0.0">
+      <category name="ia.local"/>
+   </feature>
+   <category-def name="ia.local" label="IA LOCAL">
+      <description>Javva - a IA LOCAL da casa.</description>
+   </category-def>
+</site>

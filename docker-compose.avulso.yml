@@ -1,0 +1,32 @@
+# Javva + Mongo num servidor novo, sem depender de nada da casa.
+#   cp javva.env.example javva.env   (preencha a conta do modelo)
+#   docker compose -f docker-compose.avulso.yml up -d --build
+#   curl http://127.0.0.1:8787/saude
+name: javva
+services:
+  mongo:
+    image: mongo:7
+    container_name: javva-mongo
+    restart: unless-stopped
+    volumes:
+      - javva_mongo:/data/db
+
+  javva:
+    build: .
+    image: javva:0.2.0
+    container_name: javva
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    env_file: javva.env
+    volumes:
+      - ./cliente:/dist:ro                 # javva.bat + update site do Eclipse
+      - javva_conta:/home/javva/.claude    # sessoes da conta (retomar conversa)
+    depends_on:
+      - mongo
+
+volumes:
+  javva_mongo:
+    name: javva_mongo
+  javva_conta:
+    name: javva_conta

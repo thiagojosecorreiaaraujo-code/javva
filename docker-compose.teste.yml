@@ -1,0 +1,46 @@
+# Ambiente de PROVA isolado: API falsa da Anthropic + javva-teste (porta 8788,
+# banco javva_teste). Nao gasta credito e nao toca no javva de producao.
+#   docker compose -f docker-compose.teste.yml up -d --build
+#   python testes/prova.py
+#   docker compose -f docker-compose.teste.yml down
+name: javva-teste
+services:
+  upstream-falso:
+    image: python:3.12-slim
+    container_name: javva-upstream-falso
+    command: ["python", "-u", "/t/upstream_falso.py"]
+    volumes:
+      - ./testes:/t:ro
+    ports:
+      - "9911:9911"
+    networks:
+      - lupa_net
+
+  javva-teste:
+    build: .
+    image: javva:0.2.0
+    container_name: javva-teste
+    env_file: javva.env
+    environment:
+      ANTHROPIC_BASE_URL: http://javva-upstream-falso:9911
+      ANTHROPIC_AUTH_TOKEN: chave-falsa-de-teste
+      CLAUDE_CODE_OAUTH_TOKEN: ""
+      JAVVA_DB: javva_teste
+      JAVVA_LIMITE_CMD: "25"
+    ports:
+      - "8788:8787"
+    volumes:
+      - ./cliente:/dist:ro
+      - javva_teste_claude:/home/javva/.claude
+    networks:
+      - lupa_net
+    depends_on:
+      - upstream-falso
+
+volumes:
+  javva_teste_claude:
+    name: javva_teste_claude
+
+networks:
+  lupa_net:
+    external: true

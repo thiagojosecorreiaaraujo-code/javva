@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="br.lupa.javva.feature" label="IA LOCAL - JAVVA" version="1.0.0.qualifier" provider-name="Lupa">
+   <description>A IA LOCAL da casa dentro do Eclipse: conversa, sessoes retomaveis, fotos e execucao no proprio computador com "Permitir?".</description>
+   <plugin id="br.lupa.javva" version="1.0.0.qualifier"/>
+</feature>

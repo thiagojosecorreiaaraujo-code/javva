@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.ui.views">
+      <category id="br.lupa.javva.categoria" name="IA LOCAL"/>
+      <view id="br.lupa.javva.view" name="IA LOCAL - JAVVA" category="br.lupa.javva.categoria"
+            class="br.lupa.javva.ui.JavvaView" icon="icons/javva16.png" restorable="true"/>
+   </extension>
+   <extension point="org.eclipse.ui.commands">
+      <command id="br.lupa.javva.abrir" name="Abrir o Javva"
+               defaultHandler="br.lupa.javva.ui.AbrirJavva"/>
+   </extension>
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu id="br.lupa.javva.menu" label="IA LOCAL">
+            <command commandId="br.lupa.javva.abrir" label="Abrir o Javva" icon="icons/javva16.png"/>
+         </menu>
+      </menuContribution>
+      <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar id="br.lupa.javva.toolbar">
+            <command commandId="br.lupa.javva.abrir" icon="icons/javva16.png" tooltip="IA LOCAL - JAVVA"/>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension point="org.eclipse.ui.preferencePages">
+      <page id="br.lupa.javva.preferencias" name="IA LOCAL - JAVVA" class="br.lupa.javva.ui.Preferencias"/>
+   </extension>
+   <extension point="org.eclipse.ui.startup">
+      <startup class="br.lupa.javva.ui.Autoteste"/>
+   </extension>
+</plugin>

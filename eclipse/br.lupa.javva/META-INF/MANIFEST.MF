@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: IA LOCAL - JAVVA
+Bundle-SymbolicName: br.lupa.javva;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Lupa
+Automatic-Module-Name: br.lupa.javva
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.jface.text,
+ org.eclipse.ui.ide
+Export-Package: br.lupa.javva.core

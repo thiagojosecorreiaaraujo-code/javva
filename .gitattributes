@@ -1,0 +1,7 @@
+* text=auto
+# servidos byte a byte aos clientes: nao converter fim de linha
+*.bat -text
+*.ps1 -text
+*.png binary
+*.jar binary
+*.zip binary

@@ -1,0 +1,23 @@
+name: javva
+services:
+  javva:
+    build: .
+    image: javva:0.2.0
+    container_name: javva
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    env_file: javva.env
+    volumes:
+      - ./cliente:/dist:ro
+      - javva_claude:/home/javva/.claude
+    networks:
+      - lupa_net
+
+volumes:
+  javva_claude:
+    name: javva_claude
+
+networks:
+  lupa_net:
+    external: true

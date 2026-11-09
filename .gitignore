@@ -1,0 +1,9 @@
+javva.env
+*.env
+!javva.env.example
+dist/*.exe
+__pycache__/
+*.pyc
+testes/saida/
+*.bak
+eclipse/build/
